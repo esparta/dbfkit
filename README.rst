@@ -16,4 +16,7 @@ DBF classes and utilities. For humans
 Features
 --------
 
-* TODO
+* Classes:
+    * DBFUtils: Read a DBF and exposes as a csv file
+* Console Scripts:
+    * dbf2csv: Export a DBF file to csv (utf-8 encoding)
