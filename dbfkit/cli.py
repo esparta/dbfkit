@@ -1,15 +1,15 @@
 # coding=utf-8
 """
-  Usage: python tocsv.py [options] file
+Usage: dbf2csv [OPTIONS] INPUTFILE [OUTPUT]
 
-  Options:
-    -h, --help            show this help message and exit
-    -v, --verbose         Verbose logging
-    -c CODEPAGE, --codepage=CODEPAGE
-                          Use specific codepage, if not supplied, use the
-                          table's codepage
-  Example:
-    python tocsv.py -c cp1252 catalogo.dbf
+  Convert a DBF file to csv on desired output (stdout by default)
+
+Options:
+  -c, --codepage TEXT  Use specific codepage, if not supplied, use the table's
+                       codepage
+  --version            Show the version and exit.
+  --help               Show this message and exit.
+
 """
 from __future__ import unicode_literals
 from __future__ import absolute_import
@@ -27,6 +27,7 @@ import sys
 @click.option('-c', '--codepage', default=None,
               help="Use specific codepage, if not supplied,"
                    " use the table's codepage")
+@click.version_option()
 def dbfread(inputfile, output, codepage):
     """ Convert a DBF file to csv on desired output (stdout by default) """
 
