@@ -16,7 +16,31 @@ DBF classes and utilities. For humans
 Features
 --------
 
-* Classes:
-    * DBFUtils: Read a DBF and exposes as a csv file
+
 * Console Scripts:
     * dbf2csv: Export a DBF file to csv (utf-8 encoding)
+* Classes:
+    * DBFUtils: Read a DBF and exposes as a csv file
+
+How to use it
+----------
+
+.. code-block:: bash
+
+    $ dbf2csv --help
+    Usage: dbf2csv [OPTIONS] INPUTFILE [OUTPUT]
+
+      Convert a DBF file to csv on desired output (stdout by default)
+
+    Options:
+      -c, --codepage TEXT  Use specific codepage, if not supplied, use the table's
+                           codepage
+      --version            Show the version and exit.
+      --help               Show this message and exit.
+
+
+Credits
+----------
+
+* Ethan Furman, author of `dbf` module for python: http://pythonhosted.org/dbf/
+* Armin Ronacher, author of `click` an excellent python package to create full beautiful command line interfaces: http://click.pocoo.org/
