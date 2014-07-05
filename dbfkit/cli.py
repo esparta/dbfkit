@@ -33,4 +33,3 @@ def dbfread(inputfile, output, codepage):
 
     dbf = DBFUtils(dbffile=inputfile.name, output=output, codepage=codepage)
     dbf.export()
-
