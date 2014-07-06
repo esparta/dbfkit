@@ -40,7 +40,9 @@ class DBFUtils(object):
 
         csvwriter.writerow(self.table.field_names)
         for records, row in enumerate(self.table, start=1):
-            csvwriter.writerow([unicode(field).strip() for field in row])
+            csvwriter.writerow(['' if field is None
+                                else unicode(field).strip()
+                                for field in row])
 
         return records
 

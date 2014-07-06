@@ -25,6 +25,8 @@ Features
 How to use it
 ----------
 
+As a Console script:
+
 .. code-block:: bash
 
     $ dbf2csv --help
@@ -37,6 +39,20 @@ How to use it
                            codepage
       --version            Show the version and exit.
       --help               Show this message and exit.
+
+As a module:
+
+.. code-block:: python
+
+    from dbfkit import DBFUtils
+    from cStringIO import StringIO
+
+    stream = StringIO()
+    with open("data/catalogo.dbf") as catalogo:
+        odbf = DBFUtils(catalogo.name, stream)
+        odbf.export()
+        output = stream.getvalue()
+        print(output)
 
 
 Credits
