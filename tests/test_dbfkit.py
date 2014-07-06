@@ -52,3 +52,11 @@ def test_temporalfile():
             assert output == tmp_file.read()
     finally:
         remove(csvfile)
+
+
+def test_nullfields():
+    """ Test the export of a DBF with null values """
+    odbfnull = DBFUtils("data/withnulls.dbf")
+    stream = StringIO()
+    odbfnull.export(stream)
+    assert stream.getvalue() == open("data/withnulls.csv").read()

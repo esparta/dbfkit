@@ -11,3 +11,7 @@ First public release of dbfkit
 ---------------------
 Added test with 100% coverage
 Updated README + credits
+
+0.1.2 (2014-07-06)
+---------------------
+The export function now can handle null values (as empty string)

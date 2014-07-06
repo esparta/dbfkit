@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import os
 import sys
 from setuptools.command.test import test as TestCommand
 
@@ -34,7 +33,7 @@ class PyTest(TestCommand):
 
 setup(
     name='dbfkit',
-    version='0.1.1',
+    version='0.1.2',
     description='DBF for humans',
     long_description=README + '\n\n' + HISTORY,
     author='Espartaco Palma',
@@ -48,17 +47,18 @@ setup(
     include_package_data=True,
     install_requires=REQUIREMENTS,
     cmdclass={'test': PyTest},
-    license="Apache",
+    license="Apache Software License",
     zip_safe=False,
     keywords='dbfkit',
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: Apache License',
+        'License :: OSI Approved :: Apache Software License',
         'Natural Language :: English',
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Topic :: Database',
         'Topic :: Scientific/Engineering :: Information Analysis',
         'Topic :: Software Development :: Libraries :: Python Modules',
         'Topic :: Utilities'
