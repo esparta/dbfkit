@@ -11,43 +11,30 @@ from dbf import Table
 from .utils import UnicodeWriter
 from csv import excel
 import sys
-import os
-
-
-CRLF = os.linesep
 
 
 class DBFUtils(object):
     """ DBF Utils """
-    def __init__(self, dbffile, output=None, codepage=None):
-        """ Initializer for DBFUtils """
-        self.table = None
-        self.dbffile = dbffile
-        self.output = output or sys.stdout
-        self.codepage = codepage
+    output = sys.stdout
 
-    def _opentable(self, codepage=None):
-        """ Try to open the dbf """
-        codepage = codepage or self.codepage
-        self.table = Table(self.dbffile, codepage=self.codepage)
-        return self.table.open() is not None
+    @staticmethod
+    def _opentable(dbfilename=None, codepage=None):
+        """ Open the DBF as a Table object """
+        return Table(dbfilename, codepage=codepage)
 
-    def tocsv(self, output=None, dialect=excel):
-        """ Write the table to the file object (even sys.stdout) """
+    @classmethod
+    def tocsv(cls, dbfilename=None, output=None,
+              codepage=None, dialect=excel):
+        """ Convert to csv the table to desired output (sys.stdout by default)
+        """
         records = 0
-        output = output or self.output
+        output = output or cls.output
         csvwriter = UnicodeWriter(output, dialect=dialect)
-
-        csvwriter.writerow(self.table.field_names)
-        for records, row in enumerate(self.table, start=1):
-            csvwriter.writerow(['' if field is None
-                                else unicode(field).strip()
-                                for field in row])
-
-        return records
-
-    def export(self, output=None, codepage=None):
-        """ Export a DBF file to the desired format """
-        self.output = output or self.output
-        if self._opentable(codepage=codepage):
-            return self.tocsv(output=output)
+        with cls._opentable(dbfilename=dbfilename,
+                            codepage=codepage) as table:
+            csvwriter.writerow(table.field_names)
+            for records, row in enumerate(table, start=1):
+                csvwriter.writerow(['' if field is None
+                                    else unicode(field).strip()
+                                    for field in row])
+            return records

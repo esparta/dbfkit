@@ -31,5 +31,4 @@ import sys
 def dbfread(inputfile, output, codepage):
     """ Convert a DBF file to csv on desired output (stdout by default) """
 
-    dbf = DBFUtils(dbffile=inputfile.name, output=output, codepage=codepage)
-    dbf.export()
+    DBFUtils.tocsv(dbfilename=inputfile.name, output=output, codepage=codepage)
