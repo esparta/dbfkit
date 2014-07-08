@@ -48,11 +48,10 @@ As a module:
     from cStringIO import StringIO
 
     stream = StringIO()
-    with open("data/catalogo.dbf") as catalogo:
-        odbf = DBFUtils(catalogo.name, stream)
-        odbf.export()
-        output = stream.getvalue()
-        print(output)
+    records = DBFUtils.tocsv("data/catalogo.dbf", output=stream)
+    print("Records: {records}".format(records=records))
+    print(stream.getvalue())
+
 
 
 Credits

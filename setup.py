@@ -33,7 +33,7 @@ class PyTest(TestCommand):
 
 setup(
     name='dbfkit',
-    version='0.1.2',
+    version='0.2.0',
     description='DBF for humans',
     long_description=README + '\n\n' + HISTORY,
     author='Espartaco Palma',
